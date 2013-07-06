@@ -1,3 +1,4 @@
+
 """
 %% forms.py %%
 
@@ -101,4 +102,15 @@ class CashBook(forms.Form):
 	amount_given = forms.CharField(max_length = 100)
 
 
+#class Investgation(forms.Form):
+#	name= forms.CharField(max_length = 100)
 	
+#class Invest(forms.Form):
+#	contract_name = models.CharField(max_length=50)
+#	contract_phn = models.IntegerField(blank=True,null=True)
+#	on = models.DateField()
+#	at = models.DateTimeField()
+#	addr = models.CharField(max_length=50)
+#	choice = models.CharField(max_length=50)
+#	name1 = models.CharField(max_length=50)
+#	name2 = models.CharField(max_length=50)

@@ -12,9 +12,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db_name',                      # Or path to database file if using sqlite3.
-        'USER': 'db_user',                      # Not used with sqlite3.
-        'PASSWORD': 'db_password',
+        'NAME': 'automation1',                      # Or path to database file if using sqlite3.
+        'USER': 'root',                      # Not used with sqlite3.
+        'PASSWORD': 'a',
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -28,16 +28,16 @@ DATABASES = {
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
 TIME_ZONE = 'Asia/Kolkata'
-
 # Language code for this installation. All choices can be found here:
+
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
-DEFAULT_FROM_EMAIL = 'email_add'
-EMAIL_HOST = 'localhost'
-EMAIL_HOST_USER = 'email_user'
-EMAIL_HOST_PASSWORD = 'email_pass'
+DEFAULT_FROM_EMAIL = 'kauramanjot35@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kauramanjot35@gmail.com'
+EMAIL_HOST_PASSWORD = 'AmAn013!#'
 EMAIL_USE_TLS = True 
 EMAIL_PORT = "587"
 
@@ -113,7 +113,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'Automation.urls'
 
-TEMPLATE_DIRS = ("mPath/Automation/templates"
+TEMPLATE_DIRS = ("/home/aman/Automation/templates"
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -131,6 +131,7 @@ INSTALLED_APPS =(
     'django.contrib.admin',
     'registration',
     'Automation.tcc',
+    'Automation.report',
     'tagging',
 )
 

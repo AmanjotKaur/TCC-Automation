@@ -1,5 +1,5 @@
 """
-Models for the TCC-Auto is described in this file
+Models for the TCC-Automation is described in this file
 """
 from django.db import models
 from django.forms import ModelForm, TextInput, ModelChoiceField
@@ -45,7 +45,7 @@ Report Type Cube_Test
 class Cube(models.Model):
 	ip_address = models.IPAddressField() 
 	Report_id = models.ForeignKey(Report)
-    	S_No = models.CharField(max_length=255,blank=True, default=1) 
+    	#S_No = models.CharField(max_length=255,blank=True, default=1) 
     	Description = models.CharField(max_length=150, help_text="")
     	Breaking_load = models.CharField(max_length=150)
     	Mix = models.CharField(max_length=255,blank=True) 
@@ -82,6 +82,99 @@ class Steel(models.Model):
 	
 	def __unicode__(self):
 		return self.S_No + "(" + str(self.Report_id) + ")"
+
+
+class MS_steel_plate(models.Model):
+	ip_address = models.IPAddressField()		
+	Report_id = models.ForeignKey(Report)
+	Mech_Prop = models.CharField(max_length=255,blank=True, default=1)  
+	Proof_stress = models.CharField(max_length=255,blank=True)
+	Ultimate_tensile_stress = models.CharField(max_length=255,blank=True)
+	Elongation = models.CharField(max_length=255,blank=True)
+	
+	def __unicode__(self):
+		return self.S_No + "(" + str(self.Report_id) + ")"
+
+class MS_1786_fe_415(models.Model):
+	ip_address = models.IPAddressField()		
+	Report_id = models.ForeignKey(Report)
+	Mech_Prop = models.CharField(max_length=255,blank=True, default=1)  
+	Proof_stress = models.CharField(max_length=255,blank=True)
+	Ultimate_tensile_stress = models.CharField(max_length=255,blank=True)
+	Elongation = models.CharField(max_length=255,blank=True)
+	
+	def __unicode__(self):
+		return self.S_No + "(" + str(self.Report_id) + ")"
+
+class MS_1786_fe_500(models.Model):
+	ip_address = models.IPAddressField()		
+	Report_id = models.ForeignKey(Report)
+	Mech_Prop = models.CharField(max_length=255,blank=True, default=1)  
+	Proof_stress = models.CharField(max_length=255,blank=True)
+	Ultimate_tensile_stress = models.CharField(max_length=255,blank=True)
+	Elongation = models.CharField(max_length=255,blank=True)
+	Bend_Rebend_test = models.CharField(max_length=255,blank=True)
+	Unit_wt = models.CharField(max_length=255,blank=True)	
+	def __unicode__(self):
+		return self.S_No + "(" + str(self.Report_id) + ")"
+
+
+class IS_432_MS_grade_1_a_20mm_dia(models.Model):
+	ip_address = models.IPAddressField()		
+	Report_id = models.ForeignKey(Report)
+	Mech_Prop = models.CharField(max_length=255,blank=True, default=1)  
+	Proof_stress = models.CharField(max_length=255,blank=True)
+	Ultimate_tensile_stress = models.CharField(max_length=255,blank=True)
+	Elongation = models.CharField(max_length=255,blank=True)
+	Bend_Rebend_test = models.CharField(max_length=255,blank=True)
+#	Unit_wt = models.CharField(max_length=255,blank=True)	
+	def __unicode__(self):
+		return self.S_No + "(" + str(self.Report_id) + ")"
+
+class IS_2062_2006(models.Model):
+	ip_address = models.IPAddressField()		
+	Report_id = models.ForeignKey(Report)
+	Chemical_test = models.CharField(max_length=255,blank=True, default=1)  
+	Carbon = models.CharField(max_length=255,blank=True)
+	Sulphur = models.CharField(max_length=255,blank=True)
+	Phosphorous = models.CharField(max_length=255,blank=True)
+	Silicon = models.CharField(max_length=255,blank=True)
+	Manganese = models.CharField(max_length=255,blank=True)	
+	def __unicode__(self):
+		return self.S_No + "(" + str(self.Report_id) + ")"
+
+
+
+
+
+
+'''
+class Steel(models.Model):
+	ip_address = models.IPAddressField()		
+	Report_id = models.ForeignKey(Report)
+	S_No = models.CharField(max_length=255,blank=True, default=1)  
+	Description_of_Test = models.CharField(max_length=255,blank=True)
+	Acceptable_limit_as_per = models.CharField(max_length=255,blank=True)
+	Result_1 = models.CharField(max_length=255,blank=True)
+	Result_2 = models.CharField(max_length=255,blank=True)
+	Result_3 = models.CharField(max_length=255,blank=True)
+	
+	def __unicode__(self):
+		return self.S_No + "(" + str(self.Report_id) + ")"
+
+class Steel(models.Model):
+	ip_address = models.IPAddressField()		
+	Report_id = models.ForeignKey(Report)
+	S_No = models.CharField(max_length=255,blank=True, default=1)  
+	Description_of_Test = models.CharField(max_length=255,blank=True)
+	Acceptable_limit_as_per = models.CharField(max_length=255,blank=True)
+	Result_1 = models.CharField(max_length=255,blank=True)
+	Result_2 = models.CharField(max_length=255,blank=True)
+	Result_3 = models.CharField(max_length=255,blank=True)
+	
+	def __unicode__(self):
+		return self.S_No + "(" + str(self.Report_id) + ")"
+'''
 
 """
 Report of Ground Water
@@ -430,8 +523,8 @@ class Cement_PPC(models.Model):
 	Fineness = models.CharField(max_length=100,blank=True)
 	Unaerated_Cement_Le = models.CharField(max_length=100,blank=True) 	#for Le-chat expansion(MM)
 	After_7_Days_Areation_Le = models.CharField(max_length=100,blank=True)
-	Unaerated_Cement_Auto = models.CharField(max_length=100,blank=True)	#for Auto Clave expansion(%)
-	After_7_Days_Areation_Auto = models.CharField(max_length=100,blank=True)	
+	Unaerated_Cement_Automation = models.CharField(max_length=100,blank=True)	#for Automation Clave expansion(%)
+	After_7_Days_Areation_Automation = models.CharField(max_length=100,blank=True)	
 	Consistency = models.CharField(max_length=100,blank=True)	
 	Hours_72 = models.CharField(max_length=100,blank=True) 			#Compressive Strength(MPa)	
 	Hours_168 = models.CharField(max_length=100,blank=True)	
@@ -451,8 +544,8 @@ class Cement_OPC_33(models.Model):
 	Fineness = models.CharField(max_length=100,blank=True)
 	Unaerated_Cement_Le = models.CharField(max_length=100,blank=True) 	#for Le-chat expansion(MM)
 	After_7_Days_Areation_Le = models.CharField(max_length=100,blank=True)
-	Unaerated_Cement_Auto = models.CharField(max_length=100,blank=True)	#for Auto Clave expansion(%)
-	After_7_Days_Areation_Auto = models.CharField(max_length=100,blank=True)	
+	Unaerated_Cement_Automation = models.CharField(max_length=100,blank=True)	#for Automation Clave expansion(%)
+	After_7_Days_Areation_Automation = models.CharField(max_length=100,blank=True)	
 	Consistency = models.CharField(max_length=100,blank=True)	
 	Hours_72 = models.CharField(max_length=100,blank=True) 			#Compressive Strength(MPa)	
 	Hours_168 = models.CharField(max_length=100,blank=True)	
@@ -473,8 +566,8 @@ class Cement_OPC_43(models.Model):
 	Fineness = models.CharField(max_length=100,blank=True)
 	Unaerated_Cement_Le = models.CharField(max_length=100,blank=True) 	#for Le-chat expansion(MM)
 	After_7_Days_Areation_Le = models.CharField(max_length=100,blank=True)
-	Unaerated_Cement_Auto = models.CharField(max_length=100,blank=True)	#for Auto Clave expansion(%)
-	After_7_Days_Areation_Auto = models.CharField(max_length=100,blank=True)	
+	Unaerated_Cement_Automation = models.CharField(max_length=100,blank=True)	#for Automation Clave expansion(%)
+	After_7_Days_Areation_Automation = models.CharField(max_length=100,blank=True)	
 	Consistency = models.CharField(max_length=100,blank=True)	
 	Hours_72 = models.CharField(max_length=100,blank=True) 			#Compressive Strength(MPa)	
 	Hours_168 = models.CharField(max_length=100,blank=True)	
@@ -495,8 +588,8 @@ class Cement_OPC_53(models.Model):
 	Fineness = models.CharField(max_length=100,blank=True)
 	Unaerated_Cement_Le = models.CharField(max_length=100,blank=True) 	#for Le-chat expansion(MM)
 	After_7_Days_Areation_Le = models.CharField(max_length=100,blank=True)
-	Unaerated_Cement_Auto = models.CharField(max_length=100,blank=True)	#for Auto Clave expansion(%)
-	After_7_Days_Areation_Auto = models.CharField(max_length=100,blank=True)	
+	Unaerated_Cement_Automation = models.CharField(max_length=100,blank=True)	#for Automation Clave expansion(%)
+	After_7_Days_Areation_Automation = models.CharField(max_length=100,blank=True)	
 	Consistency = models.CharField(max_length=100,blank=True)	
 	Hours_72 = models.CharField(max_length=100,blank=True) 			#Compressive Strength(MPa)	
 	Hours_168 = models.CharField(max_length=100,blank=True)	
@@ -504,9 +597,27 @@ class Cement_OPC_53(models.Model):
 
 	def __unicode__(self):
 	        return self.Initial_Time + "(" + str(self.Report_id) + ")"
+
+class Coarse_Aggregate(models.Model):
+	ip_address = models.IPAddressField()
+	Report_id = models.ForeignKey(Report)
+	Sieve_Analysis = models.CharField(max_length=100,blank=True)
+	Flakiness = models.CharField(max_length=100,blank=True)
+	Crushing = models.CharField(max_length=100,blank=True)
+	_40mm = models.CharField(max_length=100,blank=True)
+	_20mm = models.CharField(max_length=100,blank=True)
+	_12_5mm = models.CharField(max_length=100,blank=True)
+	_10mm = models.CharField(max_length=100,blank=True)
+	_4_75mm = models.CharField(max_length=100,blank=True)
+	
+	def __unicode__(self):
+	        return self.Sieve_Analysis + "(" + str(self.Report_id) + ")"
 """
 Model to store pdf/image
 """
 class Report(models.Model): 
 	file = models.FileField(upload_to='uploads/documents') 
+	
+
+
 

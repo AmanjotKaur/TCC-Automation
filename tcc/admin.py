@@ -180,6 +180,11 @@ class TransportationAdmin(admin.ModelAdmin):
 	search_fields = ('vehicleno',)
 	list_filter = ['vehicleno']
 
+#class InvestigationAdmin(admin.ModelAdmin):
+	
+#	list_display = ('name',)
+#	search_fields = ('name',)
+#	list_filter = ['name']
 
 admin.site.register(Payment, PaymentAdmin)
 admin.site.register(Lab, LabAdmin)
@@ -194,3 +199,4 @@ admin.site.register(Organisation, OrganisationAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Staff, StaffAdmin)
 admin.site.register(Transportation, TransportationAdmin)
+#admin.site.register(Investigation, InvestigationAdmin)

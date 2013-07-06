@@ -962,7 +962,7 @@ def bill(request):
 	from Automation.tcc.convert_function import *
 	net_total_eng = num2eng(net_total1)
 	template = {'job_no': job_no ,'net_total_eng':net_total_eng,
-	'servicetaxprint':servicetaxprint,'highereducationtaxprint':
+	'servicetaxprint':servicetaxprint,'highereducationtaxprint' :
 	highereducationtaxprint,'educationtaxprint':educationtaxprint,
 	'bill':bill, 'job' : job, 'net_total1' : net_total1, 'getjob' : 
 	getjob, 'getadd' : getadd,'job_date':job_date,'gettest':gettest,
@@ -1576,6 +1576,7 @@ def contact(request):
 	The contact function defines the contact form that is to be filled
 	and emailed	by user to give the feedback or to define the problem.
 	"""
+	form = ContactForm()
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
         if form.is_valid():
@@ -1605,3 +1606,117 @@ def contact(request):
 		return render_to_response('contact/contact2.html', dict(temp.\
 		items()+tmp.items()), context_instance=RequestContext(request))
 
+
+
+#def investigation(request):
+#	if request.method == 'POST':
+#		form = DoneForm(request.POST)
+#		if form.is_valid():
+#			test = request.POST.getlist('test')
+#			p = form.save()	
+#			return HttpResponseRedirect('thanks')
+#	else:
+#		data_list = Investigation.objects.all()
+#	return render_to_response('tcc/formcheck.html',{'data_list':data_list},context_instance=RequestContext(request))
+	"""
+	** material **
+
+	Material Function lists all the materials or field works. These are the 
+	links, depending on the selection of material selected, there tests are 
+	filtered.
+	"""
+
+def invest(request):
+	if request.method == 'POST':
+		form = InvestForm(request.POST)
+		
+		if form.is_valid():
+			#test = request.POST.getlist('test')
+			p = form.save()
+			cd = form.cleaned_data
+			organisation = Organisation.objects.all()
+			department = Department.objects.all().filter(id = 1)
+			ab = Invest.objects.aggregate(Max('id'))
+			abmaxid =ab['id__max']
+			done = Invest.objects.get(id=abmaxid)
+			#done = Invest.objects.get(Max('id'))
+			name_list = UserProfile.objects.all()
+			
+			#name_list = Done.objects.all()
+			
+			#name_list = UserProfile.objects.all().filter(id = 1)
+			#p.save()
+			#form.save_m2m()
+			#name = request.POST.getlist('name')
+			#p = form.save(commit=False)
+			template = {'form': form, 'organisation':organisation,'department':department, 'done':done}
+			return render_to_response('tcc/report11.html', dict(template.\
+			items() + tmp.items()), context_instance = RequestContext(request))
+			#return HttpResponseRedirect('tcc.views.form') 
+			#return HttpResponseRedirect(reverse('project.views.form',args=('1')))
+	else:
+		form = InvestForm()
+		
+		
+		#temp = {'organisation':organisation,'department':department,'name_list':name_list}
+	return render_to_response('tcc/formcheck.html', {'form': form},context_instance=RequestContext(request))
+		
+def new(request):
+    	return render_to_response('tcc/report11.html', context_instance=RequestContext(request))
+def form(request):
+	return render_to_response('tcc/formcheck.html', context_instance=RequestContext(request))
+#def rprt(request):
+#	return render_to_response('tcc/report11.html', context_instance=RequestContext(request))
+	
+	'''
+	
+	
+	
+	
+	#if request.method == 'GET':
+	#	form = NameForm(request.POST)
+	#	if form.is_valid():
+	#		cd = form.cleaned_data
+	#		name = request.name
+	#		name = cd['name']
+	#		invest = Name(name = name)
+	#		pro.save()
+		
+		
+			
+		#pro = form.save(commit=False)
+		#	pro.user = request.user
+		#	pro.save()
+		#	form.save()'''
+			
+			
+				
+	#		x = {'form': form,'maxid':maxid,}	
+	#		return render_to_response('tcc/form1.html',dict(x\
+	#		.items() + tmp.items()), context_instance=RequestContext(\
+	#		request))
+		
+		#invest = Investigation.objects.get.all()
+		#if form.is_valid():
+		
+		#	cd = form.cleaned_data
+		#	name =cd['name']
+		#	p=form.save()
+		#	return HttpResponseRedirect(reverse(\
+		#	'Automation.tcc.views.investigation'))
+	#else:
+	#	form = InvestigationForm()
+	#temp = {'form': form}
+	#return render_to_response('tcc/form1.html', dict(temp.\
+	#items() + tmp.items()), context_instance=RequestContext(request))
+	
+
+
+			
+			#return HttpResponseRedirect('project.views.form')
+			#return HttpResponseRedirect(reverse('project.views.form',args=('1')))
+	#else:
+	#	form = Student_infoForm()
+	#form = InvestigationForm(request.POST)
+	#		RequestContext(request))	
+	

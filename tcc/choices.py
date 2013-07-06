@@ -112,3 +112,12 @@ ORGANISATION_CHOICES = (
 	('SEMI-GOVERNMENT', _('SEMI-GOVERNMENT')),
 	('PRIVATE', _('PRIVATE'))
 )
+NAME_CHOICES = ( 
+	('January', _('January')),
+	('February', _('February')),
+	('March',_('March')),
+	('April', _('April')),
+	('May', _('May')),
+	('June',_('June')),
+	('July', _('July'))
+)

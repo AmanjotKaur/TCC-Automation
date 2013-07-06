@@ -10,7 +10,7 @@
   <form action="." method="GET">
     <label for="q">Name: </label>
 	{% if query == "" %}
-		 <input type="text" name="q" value=" ">
+		 <input type="text" name="q" value="">
 	{% else %}
     	<input type="text" name="q" value="{{ query|escape }}">
 	{% endif %}

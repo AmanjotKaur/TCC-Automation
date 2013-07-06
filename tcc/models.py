@@ -17,6 +17,7 @@ from django.forms.fields import DateField, ChoiceField, MultipleChoiceField
 from tagging.fields import TagField
 from tagging.models import Tag
 from Automation.tcc.choices import *
+#from tkinter import *
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
 
 #::::::::::::::::::::::DEFINE THE MODELS HERE::::::::::::::::::::::::#
@@ -919,3 +920,79 @@ class LabReport(forms.Form):
 	start_date= forms.DateField()
 	end_date= forms.DateField()
 	material = forms.ModelChoiceField(queryset=Material.objects.all())
+
+#class Investigation(models.Model):
+	"""
+	** ClientJob **
+	
+	ClientJob Class define the materials and tests performed on a clientjob.
+	
+	""" 
+	
+#	name =  models.CharField(max_length=50)
+	
+      
+   
+
+
+#class InvestigationForm(forms.ModelForm):
+	"""
+	** ClientJobForm **
+	
+	ClientJobForm Class define the form fo0r ClientJob model.
+	
+	""" 
+#	class Meta :
+#		model = Investigation
+#		fields = ['name']
+		
+class Invest(models.Model):	
+	contract_name = models.CharField(max_length=50)
+	contract_phn = models.IntegerField()
+	on = models.DateField()
+	at = models.DateTimeField()
+	addr = models.CharField(max_length=50)
+	name1 = models.CharField(max_length=50)
+	name2 = models.CharField(max_length=50)
+	
+	def __unicode__(self):
+        	return self.contract_name
+	#choice = models.ManyToManyField(Investigation,blank=True,null=True)
+	
+	
+	
+	#name = models.ManyToManyField(Test,blank=True,null=True)
+	#choice = models.ManyToManyField(Investigation, blank=True)
+
+	
+#class DoneForm(forms.ModelForm):
+	
+	#    class Meta :
+	#		model = Done
+	    
+	#		choice = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple)
+		#chioce = forms.BooleanField(required=True, label="Check this")
+
+
+class InvestForm(ModelForm):
+	
+		class Meta :
+			model = Invest
+			widgets = {
+			'contract_name' : TextInput(attrs={'size':60}),
+			'address' : TextInput(attrs={'size':60}),
+			'on' : TextInput(attrs={'size':60}),
+			'at' : TextInput(attrs={'size':60}),
+			'addr' : TextInput(attrs={'size':60}),
+			'name1' : TextInput(attrs={'size':60}),
+			'name2' : TextInput(attrs={'size':60}),
+		#'choice' :TextInput(attrs={'size':60}),
+                  }
+		
+
+	
+	
+	
+		
+
+
